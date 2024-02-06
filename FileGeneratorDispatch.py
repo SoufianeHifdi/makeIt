@@ -11,13 +11,13 @@ def generate(inputs):
         # each element of the list consists of a dict with the input values
 
         number_of_files = int(input_dict['number_of_files'])
-        size_of_files = int(input_dict['size_of_files']);
+        size_of_files = int(input_dict['size_of_files'])
         path = input_dict['path']
         file_type = input_dict['file_type']
+        base_name = f"{file_type}_{size_of_files}KB"
+        extension = f".{file_type}"
 
         if file_type == 'pdf':
-            base_name = "generated_pdf"
-            extension = ".pdf"
             initial_file_path = generate_pdf(size_of_files, path)
 
         elif file_type == 'docx':
@@ -28,8 +28,11 @@ def generate(inputs):
 
         # Copy it number_of_files - 1 times (since one file is already generated)
 
-        for i in range(2, number_of_files + 1):
-            new_file_path = os.path.join(path, f"{base_name}_{i}{extension}")
-            copy2(initial_file_path, new_file_path)
-            print(f"Copied PDF: {new_file_path}")
-        print(file_type)
+        multiple_copy(number_of_files, base_name, extension, initial_file_path, path)
+
+
+def multiple_copy(number_of_files, base_name, extension, initial_file_path, path):
+    for i in range(2, number_of_files + 1):
+        new_file_path = os.path.join(path, f"{base_name}_{i}{extension}")
+        copy2(initial_file_path, new_file_path)
+        print(f"Copied PDF: {new_file_path}")

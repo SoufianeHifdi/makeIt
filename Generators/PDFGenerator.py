@@ -15,7 +15,7 @@ def generate_file(size_of_files_kb, path):
     lines_per_page = 50  # Approximate number of lines per page
     bytes_per_line = len(text_block) * 2  # Rough approximation of bytes per line (assuming 2 bytes per character)
 
-    file_path = os.path.join(path, f"generated_pdf_{1}.pdf")
+    file_path = os.path.join(path, f"pdf_{size_of_files_kb}KB_{1}.pdf")
     c = canvas.Canvas(file_path)
     text = c.beginText(40, 800)  # Start position for the text
     text.setFont("Helvetica", 10)  # Set font and size
