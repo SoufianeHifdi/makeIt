@@ -7,9 +7,6 @@ repetition_for_1kb = 4800
 
 
 def generate_file(size_of_files_kb, path):
-    if not os.path.exists(path):
-        os.makedirs(path, exist_ok=True)  # Ensure directory exists
-
     # Constants for PDF creation
     text_block = "This is sample text. " * 4  # Adjust text block size for better file size approximation
     lines_per_page = 50  # Approximate number of lines per page
